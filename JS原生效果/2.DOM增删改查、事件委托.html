@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+
+  <style>
+    ul>li {
+      position: relative;
+      width: 200px;
+      border: 1px solid #000;
+    }
+
+    ul>li>.content {
+      display: inline-block;
+      width: 150px;
+    }
+
+    ul>li>.del {
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="box">
+    <input type="text" id="input" />
+    <button id="btn">创建</button>
+    <ul>
+    </ul>
+  </div>
+
+  <script>
+    const input = document.getElementById("input");
+    const btn = document.getElementById("btn");
+    const ul = document.querySelector("ul");
+
+    btn.addEventListener("click", function () {
+      // 边界检测 
+      const value = input.value.trim();
+      if (value === "") {
+        input.value = "";
+        alert("请输入内容");
+        return;
+      }
+      if( value.length > 10){
+        input.value = "";
+        alert("内容不能超过10个字");
+        return;
+      }
+      // 重复检测
+      const contents = document.querySelectorAll("ul>li>.content");
+      for (let i = 0; i < contents.length; i++) {
+        if (contents[i].innerHTML === value) {
+          input.value = "";
+          alert("内容不能重复");
+          return;
+        }
+      }
+      // 创建li代码片段
+      const li = document.createElement("li");
+      li.innerHTML = `<span class="content" contenteditable="true">${value}</span><span class="del">X</span>`;
+      // 添加到ul中
+      ul.appendChild(li);
+      input.value = "";
+    });
+
+    input.addEventListener("keydown", function (e) {
+      if (e.key === "Enter") {
+        btn.click();
+      }
+    })
+
+    // 删除
+    // 事件委托：给父元素绑定事件，通过事件源判断是哪个子元素
+    ul.addEventListener("click", function (e) {
+      if (e.target.className === "del") {
+        // e.target.parentNode === li
+        ul.removeChild(e.target.parentNode);
+      }
+    })
+  </script>
+</body>
+
+</html>
+</script>
+</body>
+
+</html>
