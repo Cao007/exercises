@@ -1,5 +1,6 @@
 console.log(1);
 let a = 2;
+
 setTimeout(() => {
   console.log("setTimeout1");
   new Promise((resolve) => {
@@ -8,7 +9,9 @@ setTimeout(() => {
     console.log("then2");
   });
 });
+
 console.log(a);
+
 new Promise((resolve) => {
   console.log("promise1");
   setTimeout(() => {
@@ -18,4 +21,5 @@ new Promise((resolve) => {
 }).then(() => {
   console.log("then1");
 });
+
 console.log(3);
