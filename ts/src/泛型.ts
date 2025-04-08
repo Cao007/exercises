@@ -16,3 +16,5 @@ console.log(stack.pop()); // 3
 console.log(stack.pop()); // 2
 console.log(stack.pop()); // 1
 console.log(stack.pop()); // undefined
+
+export {};

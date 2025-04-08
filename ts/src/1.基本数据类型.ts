@@ -5,3 +5,5 @@ const d: null = null;
 const e: undefined = undefined;
 const f: Symbol = Symbol("foo");
 const g: bigint = 123n;
+
+export {};

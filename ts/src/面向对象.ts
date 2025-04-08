@@ -33,3 +33,5 @@ class Cat extends Animal {
 const cat = new Cat("Kitty");
 cat.makeSound(); // Meow! Meow!
 cat.move(); // Kitty is moving
+
+export {};

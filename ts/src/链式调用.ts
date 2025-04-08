@@ -15,3 +15,5 @@ class cook {
 
 const zhangsan = new cook("张三");
 zhangsan.cookDish("红烧肉").eatDish("红烧肉");
+
+export {};
